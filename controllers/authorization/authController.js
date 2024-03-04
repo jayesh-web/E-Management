@@ -97,17 +97,6 @@ const restrictTo = (...roles) => {
   };
 };
 
-const restrictUserRole = (...roles) =>{
-  return (req,res,next) =>{
-  if(!roles.includes(req,user.role)){
-    return next(
-      new AppError("You do not have permission to perform this atioon",403)
-    );
-  }
-  next()
-  }
-}
-
 // const getMe = (req, res, next) => {
 //   req.params.id = req.user.id;
 //   next();

@@ -18,6 +18,16 @@ class BoughtPassesService {
       throw error;
     }
   };
+
+  static findSinglePassAvailable = async(eventId) =>{
+    try{
+      const pass = await BoughtPassesModel.find(eventId)
+      return pass
+    }
+    catch(error){
+      throw error;
+    }
+  }
   static updateBoughtPasses = async (id, data) => {
     try {
       const result = await BoughtPassesModel.findByIdAndUpdate(id, data);

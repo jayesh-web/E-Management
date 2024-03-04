@@ -94,8 +94,11 @@ const restrictTo = (...roles) => {
       );
     }
     next();
-  };
+  };  
 };
+const restrivtUserRolesFroMan = (...roles)=>{
+  return (roles.includes(req.user.role)) 
+}
 
 // const getMe = (req, res, next) => {
 //   req.params.id = req.user.id;

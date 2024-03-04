@@ -100,6 +100,10 @@ const restrivtUserRolesFroMan = (...roles)=>{
   return (roles.includes(req.user.role)) 
 }
 
+const restrivtUserRolesFroMan = (...roles)=>{
+  return (roles.includes(req.user.role)) 
+}
+
 // const getMe = (req, res, next) => {
 //   req.params.id = req.user.id;
 //   next();

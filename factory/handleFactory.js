@@ -31,16 +31,25 @@ const updateOne = (Model) =>
     });
   });
 
-const createOne = (Model) =>
+  const createOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.create(req.body);
-    res.status(201).json({
-      status: "success",
-      data: {
-        data: doc,
-      },
-    });
+    try {
+      const doc = await Model.create(req.body);
+      res.status(201).json({
+        status: "success",
+        data: {
+          data: doc,
+        },
+      });
+    } catch (error) {
+      res.status(403).json({
+        status:"fail",
+        message:error.message
+      })
+      // next(error); // Pass the error to the error handling middleware
+    }
   });
+
 
 const getOne = (Model, populateOption) =>
   catchAsync(async (req, res, next) => {

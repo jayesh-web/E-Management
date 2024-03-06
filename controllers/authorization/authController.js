@@ -16,6 +16,14 @@ const signToken = (id) => {
   });
 };
 const signup = catchAsync(async (req, res, next) => {
+  const {email} = req.body
+  const user = await UserModel.findOne({email});
+  if (user) {
+    return res.status(400).json({
+      status: "error",
+      message: "User with this email already exists",
+    });
+  }
   const newUser = await UserModel.create(req.body);
   const token = signToken(newUser.id);
   res.status(201).json({
